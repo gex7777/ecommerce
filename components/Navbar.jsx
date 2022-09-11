@@ -1,10 +1,13 @@
+import Link from "next/link";
 import React from "react";
 import { logoName } from "../constants";
 const Navbar = () => {
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
-        <a className="btn btn-ghost normal-case text-xl">{logoName}</a>
+        <Link href={"/"}>
+          <a className="btn btn-ghost normal-case text-xl">{logoName}</a>
+        </Link>
       </div>
       <div className="flex-none">
         <div className="dropdown dropdown-end">

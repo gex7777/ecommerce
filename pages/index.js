@@ -6,7 +6,7 @@ import {
   Tutorials,
   Footer,
 } from "../components";
-
+import { client } from "../lib/client";
 const products = [
   {
     id: "1",
@@ -27,12 +27,12 @@ const products = [
     price: "1000",
   },
 ];
-export default function Home() {
+export default function Home({ products, bannerData }) {
   return (
     <>
-      <Navbar /> <HeroBanner /> <ProductList products={products} />
+      <HeroBanner bannerData={bannerData.length && bannerData[0]} />
+      <ProductList products={products} />
       <Tutorials />
-      <Footer />
     </>
   );
 }
