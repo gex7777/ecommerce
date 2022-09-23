@@ -1,11 +1,16 @@
 import "../styles/globals.css";
 import React from "react";
 import Layout from "../components/Layout";
+import { StateContext } from "./../context/StateContext";
+import Toast from "../components/Toast";
 function MyApp({ Component, pageProps }) {
   return (
-    <Layout>
-      <Component {...pageProps} />;
-    </Layout>
+    <StateContext>
+      <Layout>
+        <Toast />
+        <Component {...pageProps} />;
+      </Layout>
+    </StateContext>
   );
 }
 

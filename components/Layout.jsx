@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
       <Head>
         <title>Jancy Teachers Food Products</title>
       </Head>
-      <header>
+      <header className="sticky top-0 z-10 ">
         <Navbar />
       </header>
       <main>{children}</main>

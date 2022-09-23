@@ -1,1 +1,1 @@
-export const logoName = "Teachers Food Products";
+export const logoName = "Jancy Teachers Food Products";
