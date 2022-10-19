@@ -32,6 +32,7 @@ export default function Home({ products, bannerData }) {
     <>
       <HeroBanner bannerData={bannerData.length && bannerData[0]} />
       <ProductList products={products} />
+
       <Tutorials />
     </>
   );

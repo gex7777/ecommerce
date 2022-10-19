@@ -2,22 +2,35 @@ import React, { useState } from "react";
 import { client } from "../../lib/client";
 import { RadioGroup } from "@headlessui/react";
 import { urlFor } from "../../lib/client";
-import { useStateContext } from "../../context/StateContext";
+import { useShoppingCart, useStateContext } from "../../context/ShopContext";
+import QuantityBtns from "../../components/QuantityBtns";
+import { INCREMENT } from "./../../context/shopReducer";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function ProductDetails({ product }) {
-  const { decQty, incQty, qty } = useStateContext();
+  const { cartState, dispatch } = useShoppingCart();
 
-  console.log(product);
   const [selectedSize, setSelectedSize] = useState(product.variants[0]);
-  const handleQuantity = (e) => {
-    e.preventDefault();
-    let value = parseInt(e.target.value);
-    console.log(e);
-    setQuantity((prev) => prev + value);
+  const productInCart = cartState?.cart?.find(
+    (prod) => prod?._id == product._id && prod.size === selectedSize.name
+  );
+  const addToCart = () => {
+    const productToPutInCart = {
+      _id: product._id,
+      size: selectedSize.name,
+      quantity: 1,
+      image: product.image[0],
+      variants: product.variants,
+    };
+    console.log(productToPutInCart);
+    dispatch({ action: INCREMENT, product: productToPutInCart });
+  };
+  const buyNow = () => {
+    addToCart;
+    //navigate to checkout
   };
   return (
     <div className="bg-white">
@@ -143,33 +156,23 @@ export default function ProductDetails({ product }) {
                 </div>
               </RadioGroup>
             </div>
-            <div className="form-control">
-              <h3 className="text-sm font-medium text-gray-900 mt-4">
-                Quantity
-              </h3>
-              <div className="input-group mt-4">
-                <button className="btn btn-outline" onClick={decQty}>
-                  -
+            {productInCart ? (
+              <div className="mt-4 flex">
+                <QuantityBtns product={productInCart} />
+              </div>
+            ) : (
+              <div className="flex justify-between">
+                <button onClick={addToCart} className=" my-6 btn btn-primary">
+                  add to cart
                 </button>
-                <input
-                  type="number"
-                  value={qty}
-                  className="input input-bordered text-center"
-                  onChange={(e) => null}
-                />
-                <button className="btn btn-outline" onClick={incQty}>
-                  +
+                <button
+                  onClick={buyNow}
+                  className=" my-6 btn btn-secondary disabled"
+                >
+                  buy now
                 </button>
               </div>
-            </div>
-            <div className="flex justify-between">
-              <button type="submit" className=" my-6 btn btn-primary">
-                add to cart
-              </button>
-              <button type="submit" className=" my-6 btn btn-secondary">
-                buy now
-              </button>
-            </div>
+            )}
           </div>
 
           <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pt-6 lg:pb-16 lg:pr-8">
