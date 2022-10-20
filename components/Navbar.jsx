@@ -23,9 +23,11 @@ const Navbar = () => {
             <Image src={"/jtfplogo2.png"} width="50" height="50" />
           </div>
           <Link href={"/"}>
-            <a className="btn sm:flex   btn-ghost normal-case sm:text-xl">
-              <div className="font-title text-primary inline-flex  transition-all duration-200 md:text-3xl">
-                {logoName}
+            <a className="btn sm:flex   btn-ghost normal-case ">
+              <div className="font-title text-primary inline-flex   transition-all duration-200 md:text-3xl">
+                <div className="truncate ... max-w-[100px] sm:max-w-full">
+                  {logoName}
+                </div>
               </div>
             </a>
           </Link>
@@ -35,8 +37,7 @@ const Navbar = () => {
           <di>
             <Link href={"/support"}>
               <a className="btn btn-ghost  normal-case ">
-                <div className="tfont-title text-primary inline-flex  transition-all duration-200 md:text-3xl">
-                  {" "}
+                <div className="font-title text-primary inline-flex  transition-all duration-200 md:text-3xl">
                   Contact us
                 </div>
               </a>
