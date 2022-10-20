@@ -7,11 +7,11 @@ const HeroBanner = ({ bannerData }) => {
       <div className="hero-content flex-col lg:flex-row-reverse">
         <img
           src={urlFor(bannerData.image)}
-          className="max-w-sm rounded-lg shadow-2xl"
+          className="max-w-sm md:max-w-sm rounded-lg shadow-2xl"
         />
         <div>
           <h1 className="text-5xl font-bold">{bannerData.title}</h1>
-          <p className="py-6">{bannerData.desc}</p>
+          <p className="py-6 ">{bannerData.desc}</p>
           <button className="btn btn-primary">{bannerData.btnText}</button>
         </div>
       </div>

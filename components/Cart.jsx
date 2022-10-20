@@ -12,38 +12,47 @@ import { REMOVE } from "./../context/shopReducer";
 import { urlFor } from "../lib/client";
 
 const Cart = () => {
-  const { cartState } = useShoppingCart();
+  const { cartState, setShowCart } = useShoppingCart();
   console.log(cartState);
   return (
-    <div
-      className="top-16 right-0 absolute bg-base-100 backdrop-blur-sm bg-opacity-90 max-h-96 flex flex-col w-full md:w-2/5
-    "
-    >
-      <ul className=" p-4 flex flex-col divide-y min-w-min h-5/6">
-        {!!cartState &&
-          cartState.cart.map((item) => {
-            return (
-              <>
-                {item && (
-                  <li key={`${item._id} + ${item.size}`}>
-                    <CartItem key={`${item._id} + ${item.size}`} item={item} />
-                  </li>
-                )}
-              </>
-            );
-          })}
-      </ul>
-      <div className="flex justify-between items-center p-4">
-        <div className="text-2xl">Total</div>
-        <div className="text-4xl">rupees</div>
+    <>
+      <label htmlFor="my-drawer" className="drawer-overlay"></label>
+      <div
+        className="top-0 right-0 pb-16  px-4 z-10 fixed  bg-base-100 backdrop-blur-sm bg-opacity-90 h-full flex flex-col justify-between w-80 
+      "
+      >
+        <ul className="  flex flex-col divide-y min-w-min max-h-[80%] overflow-y-scroll ">
+          {!!cartState &&
+            cartState.cart.map((item) => {
+              console.log(item);
+              return (
+                <>
+                  {item && (
+                    <li key={`${item._id} + ${item.size}`}>
+                      <CartItem
+                        key={`${item._id} + ${item.size}`}
+                        item={item}
+                      />
+                    </li>
+                  )}
+                </>
+              );
+            })}
+        </ul>
+        <div className="flex flex-col">
+          <div className="flex justify-between items-center pb-2 ">
+            <div className="text-2xl">Total</div>
+            <div className="text-4xl">rupees</div>
+          </div>
+          <div className="btn min-h-16 items-center">
+            <span className="text-4xl">checkout</span>
+            <span>
+              <AiOutlineArrowRight size={29} />
+            </span>{" "}
+          </div>
+        </div>
       </div>
-      <div className="btn items-center">
-        <span>checkout</span>
-        <span>
-          <AiOutlineArrowRight />
-        </span>{" "}
-      </div>
-    </div>
+    </>
   );
 };
 
@@ -53,7 +62,7 @@ const CartItem = ({ item: { name, quantity, size, variants, _id, image } }) => {
   console.log(variants, size);
   const price = variants.find((varient) => varient.name === size).price;
   return (
-    <div className=" grid grid-rows-3 grid-cols-3  ">
+    <div className=" grid grid-rows-3 grid-cols-[.7fr_1.4fr_1.4fr]  ">
       <div className="row-span-4    justify-self-center">
         <img
           className="object-fill h-28 w-28 p-2"
@@ -62,37 +71,34 @@ const CartItem = ({ item: { name, quantity, size, variants, _id, image } }) => {
         />
       </div>
       <div className=" p-1  col-span-2 flex justify-between ">
-        <div className="text-2xl">{name}</div>
-        <div className="text-2xl">₹ {price * quantity}</div>
+        <div className="text-4xl md:text-2xl">{name}</div>
+        <div className="text-4xl md:text-2xl">₹ {price * quantity}</div>
       </div>
       <div className="flex items-start justify-between col-span-2">
-        <div className="flex divide-x">
-          <div className="text-xs pr-1">₹ {price}</div>
+        <div className="flex items-center divide-x">
+          <div className="text-3xl md:text-xl pr-1 ">₹{price}</div>
           <div
             className={`${
               variants.find((varient) => varient.name === size).instock
                 ? "text-green-500"
                 : "text-red-500"
-            } text-xs pl-1 `}
+            } text-xl md:text-xl pl-1 `}
           >
             {variants.find((varient) => varient.name === size).instock
               ? "in stock"
-              : "not available"}{" "}
+              : "not available"}
           </div>
         </div>
       </div>
       <div className="col-span-2  ">
         <div className="flex justify-between items-center">
-          <div className="badge badge-outline">{size}</div>
+          <div className="badge badge-outline  badge-lg ">{size}</div>
 
           <div className="btn-xs">
-            <QuantityBtns
-              sm
-              product={{ name, quantity, size, variants, _id }}
-            />
+            <QuantityBtns product={{ name, quantity, size, variants, _id }} />
           </div>
           <button
-            className="flex items-center btn  btn-outline btn-xs "
+            className="flex items-center btn  btn-outline text-xl text-red-600 "
             onClick={() =>
               dispatch({
                 action: REMOVE,
@@ -100,9 +106,9 @@ const CartItem = ({ item: { name, quantity, size, variants, _id, image } }) => {
               })
             }
           >
-            <span> delete</span>
+            <span className=""> delete</span>
             <span>
-              <AiOutlineDelete className="  rounded-full" size={"1rem"} />
+              <AiOutlineDelete className="  rounded-full" size={"2rem"} />
             </span>
           </button>
         </div>

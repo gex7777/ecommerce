@@ -24,6 +24,7 @@ export default function ProductDetails({ product }) {
       quantity: 1,
       image: product.image[0],
       variants: product.variants,
+      name: product.name,
     };
     console.log(productToPutInCart);
     dispatch({ action: INCREMENT, product: productToPutInCart });
@@ -94,7 +95,7 @@ export default function ProductDetails({ product }) {
                 <RadioGroup.Label className="sr-only">
                   Choose packet weight
                 </RadioGroup.Label>
-                <div className="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4">
+                <div className="grid grid-cols-4 gap-4 z-o sm:grid-cols-8 lg:grid-cols-4">
                   {product.variants.map((size) => {
                     return (
                       <RadioGroup.Option
@@ -133,7 +134,7 @@ export default function ProductDetails({ product }) {
                                 className="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200"
                               >
                                 <svg
-                                  className="absolute inset-0 h-full w-full stroke-2 text-gray-200"
+                                  className="absolute  inset-0 h-full w-full stroke-2 text-gray-200"
                                   viewBox="0 0 100 100"
                                   preserveAspectRatio="none"
                                   stroke="currentColor"

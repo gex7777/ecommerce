@@ -7,6 +7,7 @@ import {
   Footer,
 } from "../components";
 import { client } from "../lib/client";
+
 const products = [
   {
     id: "1",
@@ -31,9 +32,6 @@ export default function Home({ products, bannerData }) {
   return (
     <>
       <HeroBanner bannerData={bannerData.length && bannerData[0]} />
-      <ProductList products={products} />
-
-      <Tutorials />
     </>
   );
 }
