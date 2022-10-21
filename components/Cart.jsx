@@ -18,7 +18,7 @@ const Cart = () => {
     <>
       <label htmlFor="my-drawer" className="drawer-overlay"></label>
       <div
-        className="top-0 right-0 pb-16  px-4 z-10 fixed  bg-base-100 backdrop-blur-sm bg-opacity-90 h-full flex flex-col justify-between w-80 
+        className="top-0 right-0 pb-16  px-4 z-10 fixed  bg-base-100 backdrop-blur-sm bg-opacity-90 h-full flex flex-col justify-between w- 
       "
       >
         <ul className="  flex flex-col divide-y min-w-min max-h-[80%] overflow-y-scroll ">

@@ -8,8 +8,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <GlobalState>
       <Layout>
-        <Toast />
-        <Component {...pageProps} />;
+        <Component {...pageProps} />
       </Layout>
     </GlobalState>
   );

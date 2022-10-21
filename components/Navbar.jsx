@@ -34,7 +34,7 @@ const Navbar = () => {
         </div>
 
         <div className="flex-0">
-          <di>
+          <div>
             <Link href={"/support"}>
               <a className="btn btn-ghost  normal-case ">
                 <div className="font-title text-primary inline-flex  transition-all duration-200 md:text-3xl">
@@ -42,9 +42,9 @@ const Navbar = () => {
                 </div>
               </a>
             </Link>
-          </di>
+          </div>
           <button
-            className=" cursor-pointer"
+            className=" btn btn-ghost cursor-pointer"
             onClick={() => setShowCart((prev) => !prev)}
           >
             <div className="indicator">
@@ -53,10 +53,7 @@ const Navbar = () => {
                   {cartState.cart.length}
                 </span>
               ) : null}
-              <label
-                htmlFor="my-drawer"
-                className="btn btn-square btn-ghost drawer-button "
-              >
+              <label htmlFor="my-drawer" className=" drawer-button ">
                 <HiOutlineShoppingCart
                   size={"1.5rem"}
                   className="transition-all duration-200"

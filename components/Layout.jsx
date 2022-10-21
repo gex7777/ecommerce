@@ -15,15 +15,14 @@ const Layout = ({ children }) => {
         <title>Jancy Teachers Food Products</title>
       </Head>
       <div className="drawer drawer-end">
-        <input id="my-drawer" type="checkbox" class="drawer-toggle" />
-        <div className="drawer-content">
+        <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+        <div className="drawer-content ">
           <Navbar />
 
           <Toaster position="top-center" reverseOrder={false} />
           <main>{children}</main>
-          <footer>
-            <Footer />
-          </footer>
+
+          <Footer />
         </div>
         <div className="drawer-side">
           <Cart />
