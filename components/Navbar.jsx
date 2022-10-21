@@ -43,7 +43,8 @@ const Navbar = () => {
               </a>
             </Link>
           </div>
-          <button
+          <label
+            htmlFor="my-drawer"
             className=" btn btn-ghost cursor-pointer"
             onClick={() => setShowCart((prev) => !prev)}
           >
@@ -60,7 +61,7 @@ const Navbar = () => {
                 />
               </label>
             </div>
-          </button>
+          </label>
         </div>
       </nav>
     </div>
