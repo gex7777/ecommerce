@@ -11,7 +11,7 @@ const ContactInfo = () => {
           <h1 className="text-5xl font-bold">Lets talk</h1>
           <p className="py-6">We are availabe on facebook and whatsapp!</p>
         </div>
-        <div className="flex flex-col justify-between gap-4">
+        <div className="flex flex-col justify-between items-center gap-4">
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <div className="card-body text-center">
               <div className="self-center">
