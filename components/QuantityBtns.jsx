@@ -2,7 +2,7 @@ import React from "react";
 import { useShoppingCart, useStateContext } from "../context/ShopContext";
 import { DECREMENT, INCREMENT } from "./../context/shopReducer";
 
-const QuantityBtns = ({ product }) => {
+const QuantityBtns = ({ product, xs }) => {
   const { dispatch, cartState } = useShoppingCart();
   console.log(cartState);
   const { quantity } = cartState.cart.find(
@@ -10,16 +10,20 @@ const QuantityBtns = ({ product }) => {
   );
 
   return (
-    <div className="w-full h-full flex justify-center items-center">
+    <div className="w-full h-full flex  items-center">
       <button
-        className={` btn  md:btn-xs btn-outline rounded-r-none rounded-l-xl`}
+        className={` btn ${
+          xs && "btn-xs"
+        }  btn-outline rounded-r-none rounded-l-xl`}
         onClick={() => dispatch({ action: INCREMENT, product })}
       >
         +
       </button>
-      <div className={`btn md:btn-xs rounded-none`}>{quantity}</div>
+      <div className={`btn ${xs && "btn-xs"}  rounded-none`}>{quantity}</div>
       <button
-        className={`btn md:btn-xs btn-outline rounded-r-xl rounded-l-none`}
+        className={`btn ${
+          xs && "btn-xs"
+        }  btn-outline rounded-r-xl rounded-l-none`}
         onClick={() => dispatch({ action: DECREMENT, product })}
       >
         -

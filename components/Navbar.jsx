@@ -54,12 +54,11 @@ const Navbar = () => {
                   {cartState.cart.length}
                 </span>
               ) : null}
-              <label htmlFor="my-drawer" className=" drawer-button ">
-                <HiOutlineShoppingCart
-                  size={"1.5rem"}
-                  className="transition-all duration-200"
-                />
-              </label>
+
+              <HiOutlineShoppingCart
+                size={"1.5rem"}
+                className="transition-all duration-200"
+              />
             </div>
           </label>
         </div>

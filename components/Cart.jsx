@@ -10,6 +10,7 @@ import QuantityBtns from "./QuantityBtns";
 
 import { REMOVE } from "./../context/shopReducer";
 import { urlFor } from "../lib/client";
+import EmptyCart from "./EmptyCart";
 
 const Cart = () => {
   const { cartState, setShowCart } = useShoppingCart();
@@ -18,39 +19,44 @@ const Cart = () => {
     <>
       <label htmlFor="my-drawer" className="drawer-overlay"></label>
       <div
-        className="top-0 right-0 pb-16  px-4 z-10 fixed  bg-base-100 backdrop-blur-sm bg-opacity-90 h-full flex flex-col justify-between w- 
+        className="top-0 right-0 pb-16  px-4 z-10 fixed  bg-base-100 backdrop-blur-sm bg-opacity-90 h-full flex flex-col justify-between w-11/12 sm:w-
       "
       >
-        <ul className="  flex flex-col divide-y min-w-min max-h-[80%] overflow-y-scroll ">
-          {!!cartState &&
-            cartState.cart.map((item) => {
-              console.log(item);
-              return (
-                <>
-                  {item && (
-                    <li key={`${item._id} + ${item.size}`}>
-                      <CartItem
-                        key={`${item._id} + ${item.size}`}
-                        item={item}
-                      />
-                    </li>
-                  )}
-                </>
-              );
-            })}
-        </ul>
-        <div className="flex flex-col">
-          <div className="flex justify-between items-center pb-2 ">
-            <div className="text-2xl">Total</div>
-            <div className="text-4xl">rupees</div>
-          </div>
-          <div className="btn min-h-16 items-center">
-            <span className="text-4xl">checkout</span>
-            <span>
-              <AiOutlineArrowRight size={29} />
-            </span>{" "}
-          </div>
-        </div>
+        {cartState && cartState.cart.length > 0 ? (
+          <>
+            <ul className="  flex flex-col divide-y w-full max-h-[80%] overflow-y-scroll ">
+              {cartState.cart.map((item) => {
+                console.log(item);
+                return (
+                  <>
+                    {item && (
+                      <li key={`${item._id} + ${item.size}`}>
+                        <CartItem
+                          key={`${item._id} + ${item.size}`}
+                          item={item}
+                        />
+                      </li>
+                    )}
+                  </>
+                );
+              })}
+            </ul>
+            <div className="flex flex-col">
+              <div className="flex justify-between items-center pb-2 ">
+                <div className="">Total</div>
+                <div className="">rupees</div>
+              </div>
+              <div className="btn min-h-16 items-center">
+                <span className="">checkout</span>
+                <span>
+                  <AiOutlineArrowRight size={29} />
+                </span>{" "}
+              </div>
+            </div>
+          </>
+        ) : (
+          <EmptyCart />
+        )}
       </div>
     </>
   );
@@ -71,18 +77,18 @@ const CartItem = ({ item: { name, quantity, size, variants, _id, image } }) => {
         />
       </div>
       <div className=" p-1  col-span-2 flex justify-between ">
-        <div className="text-4xl md:text-2xl">{name}</div>
-        <div className="text-4xl md:text-2xl">₹ {price * quantity}</div>
+        <div className="">{name}</div>
+        <div className="">₹ {price * quantity}</div>
       </div>
       <div className="flex items-start justify-between col-span-2">
         <div className="flex items-center divide-x">
-          <div className="text-3xl md:text-xl pr-1 ">₹{price}</div>
+          <div className=" pr-1 ">₹{price}</div>
           <div
             className={`${
               variants.find((varient) => varient.name === size).instock
                 ? "text-green-500"
                 : "text-red-500"
-            } text-xl md:text-xl pl-1 `}
+            } pl-1 `}
           >
             {variants.find((varient) => varient.name === size).instock
               ? "in stock"
@@ -92,13 +98,16 @@ const CartItem = ({ item: { name, quantity, size, variants, _id, image } }) => {
       </div>
       <div className="col-span-2  ">
         <div className="flex justify-between items-center">
-          <div className="badge badge-outline  badge-lg ">{size}</div>
+          <div className="badge badge-outline ">{size}</div>
 
           <div className="btn-xs">
-            <QuantityBtns product={{ name, quantity, size, variants, _id }} />
+            <QuantityBtns
+              product={{ name, quantity, size, variants, _id }}
+              xs
+            />
           </div>
           <button
-            className="flex items-center btn  btn-outline text-xl text-red-600 "
+            className="flex items-center btn  btn-xs btn-outline  text-red-600 "
             onClick={() =>
               dispatch({
                 action: REMOVE,
@@ -108,7 +117,7 @@ const CartItem = ({ item: { name, quantity, size, variants, _id, image } }) => {
           >
             <span className=""> delete</span>
             <span>
-              <AiOutlineDelete className="  rounded-full" size={"2rem"} />
+              <AiOutlineDelete className="  rounded-full" size={"1rem"} />
             </span>
           </button>
         </div>
