@@ -71,7 +71,7 @@ const CartItem = ({ item: { name, quantity, size, variants, _id, image } }) => {
     <div className=" grid grid-rows-3 grid-cols-[.7fr_1.4fr_1.4fr]  ">
       <div className="row-span-4    justify-self-center">
         <img
-          className="object-fill h-28 w-28 p-2"
+          className="object-contain h-28 w-28 p-2"
           src={urlFor(image)}
           alt="maw"
         />
