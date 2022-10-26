@@ -20,11 +20,11 @@ const Checkout = ({
     },
   ];
   return (
-    <div className="px-4">
+    <div className="px-4 flex flex-col justify-center items-stretch">
       <ul className="steps container mx-auto">
-        <li className="step step-primary">shipping adress</li>
+        <li className="step step-primary">Purchase</li>
 
-        <li className="step">Purchase</li>
+        <li className="step">shipping adress</li>
         <li className="step">confirmation</li>
       </ul>
 
@@ -33,22 +33,7 @@ const Checkout = ({
         {cart &&
           cart.length > 0 &&
           cart.map((item) => (
-            <div className="flex ">
-              <div className="indicator ">
-                <span className="indicator-item badge">{item.quantity}</span>
-                <img
-                  className="object-cover h-28 w-28 "
-                  src={item.image}
-                  alt="maw"
-                />
-              </div>
-              <div className="  flex flex-col justify-start  pl-5">
-                <div className="text-xl font-bold">{`${item.name} (${item.size})`}</div>
-                <div className="">{item.quantity + " qty"}</div>
-
-                <div className=" pr-1 ">₹{item.price * item.quantity}</div>
-              </div>
-            </div>
+            cartItem(item)
           ))}
       </div>
       <div className="flex flex-col text-xl">
@@ -81,3 +66,21 @@ const Checkout = ({
 };
 
 export default Checkout;
+function cartItem(item) {
+  return <div className="flex ">
+    <div className="indicator ">
+      <span className="indicator-item badge">{item.quantity}</span>
+      <img
+        className="object-cover h-28 w-28 "
+        src={item.image}
+        alt="maw" />
+    </div>
+    <div className="  flex flex-col justify-start  pl-5">
+      <div className="text-xl font-bold">{`${item.name} (${item.size})`}</div>
+      <div className="">{item.quantity + " qty"}</div>
+
+      <div className=" pr-1 ">₹{item.price * item.quantity}</div>
+    </div>
+  </div>;
+}
+
