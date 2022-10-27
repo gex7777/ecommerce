@@ -13,13 +13,13 @@ import { urlFor } from "../lib/client";
 import EmptyCart from "./EmptyCart";
 
 const Cart = () => {
-  const { cartState, setShowCart } = useShoppingCart();
+  const { cartState } = useShoppingCart();
   console.log(cartState);
   return (
     <>
       <label htmlFor="my-drawer" className="drawer-overlay"></label>
       <div
-        className="top-0 right-0 pb-16  px-4 z-10 fixed  bg-base-100 backdrop-blur-sm bg-opacity-90 h-full flex flex-col justify-between w-11/12 sm:w-
+        className="top-0 right-0 pb-16  px-4 z-10 fixed  bg-base-100 backdrop-blur-sm bg-opacity-90 h-full flex flex-col justify-between w-11/12 md:w-[30%] lg:w-[30%]
       "
       >
         {cartState && cartState.cart.length > 0 ? (
