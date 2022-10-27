@@ -34,40 +34,13 @@ export default function ProductDetails({ product }) {
     //navigate to checkout
   };
   return (
-    <div className="bg-white">
+    <div className="">
       <div className="pt-6">
         {/* Image gallery */}
-        <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
-          <div className="aspect-w-3 aspect-h-4 hidden overflow-hidden rounded-lg lg:block">
-            <img
-              src={urlFor(product.image[0])}
-              className="h-full w-full object-cover object-center"
-            />
-          </div>
-          <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
-            <div className="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
-              <img
-                src={urlFor(product.image[1])}
-                className="h-full w-full object-cover object-center"
-              />
-            </div>
-            <div className="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
-              <img
-                src={urlFor(product.image[2])}
-                className="h-full w-full object-cover object-center"
-              />
-            </div>
-          </div>
-          <div className="aspect-w-4 aspect-h-5 sm:overflow-hidden sm:rounded-lg lg:aspect-w-3 lg:aspect-h-4">
-            <img
-              src={urlFor(product.image[3])}
-              className="h-full w-full object-cover object-center"
-            />
-          </div>
-        </div>
+        <Carosel images={product.image} />
 
         {/* Product info */}
-        <div className="mx-auto max-w-2xl px-4 pt-10 pb-16 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pt-16 lg:pb-24">
+        <div className="mx-auto  px-4 pt-10 pb-16 sm:px-6 lg:grid  lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pt-16 lg:pb-24">
           <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
             <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
               {product.name}
@@ -134,7 +107,7 @@ export default function ProductDetails({ product }) {
                                 className="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200"
                               >
                                 <svg
-                                  className="absolute  inset-0 h-full w-full stroke-2 text-gray-200"
+                                  className="absolute  inset-0 h-full  stroke-2 text-gray-200"
                                   viewBox="0 0 100 100"
                                   preserveAspectRatio="none"
                                   stroke="currentColor"
@@ -240,4 +213,34 @@ export const getStaticProps = async ({ params: { slug } }) => {
   return {
     props: { product },
   };
+};
+const Carosel = ({ images }) => {
+  return (
+    <>
+      <div className=" mx-auto carousel w-full sm:w-80 lg:w-2/6 ">
+        {images.map((image, i) => (
+          <div id={`item${i + 1}`} className="carousel-item w-full">
+            <img
+              src={urlFor(image)}
+              className="h-full  object-cover object-center"
+            />
+          </div>
+        ))}
+      </div>
+      <div className="flex justify-center w-full py-2 gap-2">
+        <a href="#item1" className="btn btn-xs">
+          1
+        </a>
+        <a href="#item2" className="btn btn-xs">
+          2
+        </a>
+        <a href="#item3" className="btn btn-xs">
+          3
+        </a>
+        <a href="#item4" className="btn btn-xs">
+          4
+        </a>
+      </div>
+    </>
+  );
 };

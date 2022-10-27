@@ -8,7 +8,7 @@ import { useShoppingCart } from "../context/ShopContext";
 import Image from "next/image";
 
 const Navbar = () => {
-  const { showCart, setShowCart, cartState } = useShoppingCart();
+  const { totalQuantity } = useShoppingCart();
   return (
     <div
       className="
@@ -43,15 +43,11 @@ const Navbar = () => {
               </a>
             </Link>
           </div>
-          <label
-            htmlFor="my-drawer"
-            className=" btn btn-ghost cursor-pointer"
-            onClick={() => setShowCart((prev) => !prev)}
-          >
+          <label htmlFor="my-drawer" className=" btn btn-ghost cursor-pointer">
             <div className="indicator">
-              {cartState?.cart?.length > 0 ? (
+              {totalQuantity > 0 ? (
                 <span className="indicator-item badge badge-secondary text-xs">
-                  {cartState.cart.length}
+                  {totalQuantity}
                 </span>
               ) : null}
 
