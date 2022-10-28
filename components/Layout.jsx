@@ -16,7 +16,12 @@ const Layout = ({ children }) => {
         <title>Jancy Teachers Food Products</title>
       </Head>
       <div className="drawer drawer-end ">
-        <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+        <input
+          id="my-drawer"
+          type="checkbox"
+          checked={showCart}
+          className="drawer-toggle"
+        />
         <div className="drawer-content ">
           <Navbar />
 

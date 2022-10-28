@@ -4,7 +4,7 @@ import { DECREMENT, INCREMENT } from "./../context/shopReducer";
 
 const QuantityBtns = ({ product, xs }) => {
   const { dispatch, cartState } = useShoppingCart();
-  console.log(cartState);
+
   const { quantity } = cartState.cart.find(
     (prod) => prod._id === product._id && prod.size === product.size
   );

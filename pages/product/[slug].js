@@ -11,7 +11,7 @@ function classNames(...classes) {
 }
 
 export default function ProductDetails({ product }) {
-  const { cartState, dispatch } = useShoppingCart();
+  const { cartState, dispatch, setShowCart } = useShoppingCart();
 
   const [selectedSize, setSelectedSize] = useState(product.variants[0]);
   const productInCart = cartState?.cart?.find(
@@ -28,9 +28,12 @@ export default function ProductDetails({ product }) {
     };
     console.log(productToPutInCart);
     dispatch({ action: INCREMENT, product: productToPutInCart });
+
+    setShowCart(true);
   };
   const buyNow = () => {
     addToCart;
+
     //navigate to checkout
   };
   return (

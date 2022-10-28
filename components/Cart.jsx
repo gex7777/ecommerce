@@ -13,11 +13,15 @@ import { urlFor } from "../lib/client";
 import EmptyCart from "./EmptyCart";
 
 const Cart = () => {
-  const { cartState } = useShoppingCart();
+  const { setShowCart, cartState } = useShoppingCart();
   console.log(cartState);
   return (
     <>
-      <label htmlFor="my-drawer" className="drawer-overlay"></label>
+      <label
+        htmlFor="my-drawer"
+        onClick={() => setShowCart(false)}
+        className="drawer-overlay"
+      ></label>
       <div
         className="top-0 right-0 pb-16  px-4 z-10 fixed  bg-base-100 backdrop-blur-sm bg-opacity-90 h-full flex flex-col justify-between w-11/12 md:w-[30%] lg:w-[30%]
       "
@@ -52,6 +56,9 @@ const Cart = () => {
                   <AiOutlineArrowRight size={29} />
                 </span>{" "}
               </div>
+              <button onClick={() => setShowCart(false)}>
+                back to shoping
+              </button>
             </div>
           </>
         ) : (
