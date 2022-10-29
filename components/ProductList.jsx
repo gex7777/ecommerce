@@ -11,7 +11,7 @@ const ProductList = ({ products }) => {
           products.map((product) => (
             <Link href={`/product/${product.slug.current}`} key={product._id}>
               <div
-                className="relative text-gray-50  hover:scale-105 transition-all ease-linear active:scale-95
+                className="relative text-gray-50  hover:scale-105 transition-all ease-in-out active:scale-95 duration-100
                 w-80 h-96 rounded-2xl bg-cover"
                 style={{
                   backgroundImage: `url(${urlFor(
