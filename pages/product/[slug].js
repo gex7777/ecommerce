@@ -5,6 +5,7 @@ import { urlFor } from "../../lib/client";
 import { useShoppingCart, useStateContext } from "../../context/ShopContext";
 import QuantityBtns from "../../components/QuantityBtns";
 import { INCREMENT } from "./../../context/shopReducer";
+import { toast } from "react-hot-toast";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -28,11 +29,11 @@ export default function ProductDetails({ product }) {
     };
     console.log(productToPutInCart);
     dispatch({ action: INCREMENT, product: productToPutInCart });
-
+    toast.success("added product to cart");
     setShowCart(true);
   };
   const buyNow = () => {
-    addToCart;
+    addToCart();
 
     //navigate to checkout
   };
