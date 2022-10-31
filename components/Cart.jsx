@@ -13,7 +13,7 @@ import { urlFor } from "../lib/client";
 import EmptyCart from "./EmptyCart";
 
 const Cart = () => {
-  const { setShowCart, cartState } = useShoppingCart();
+  const { setShowCart, cartState, totalPrice } = useShoppingCart();
   console.log(cartState);
   return (
     <>
@@ -48,7 +48,7 @@ const Cart = () => {
             <div className="flex flex-col">
               <div className="flex justify-between items-center pb-2 ">
                 <div className="">Total</div>
-                <div className="">rupees</div>
+                <div className="">₹{totalPrice}</div>
               </div>
               <div className="btn min-h-16 items-center">
                 <span className="">checkout</span>

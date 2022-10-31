@@ -26,6 +26,7 @@ export default function ProductDetails({ product }) {
       image: product.image[0],
       variants: product.variants,
       name: product.name,
+      price: product.price,
     };
     console.log(productToPutInCart);
     dispatch({ action: INCREMENT, product: productToPutInCart });
