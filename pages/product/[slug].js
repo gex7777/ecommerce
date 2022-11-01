@@ -20,13 +20,13 @@ export default function ProductDetails({ product }) {
   );
   const addToCart = () => {
     const productToPutInCart = {
-      _id: product._id,
+      _id: product._id + product.size,
       size: selectedSize.name,
       quantity: 1,
       image: product.image[0],
       variants: product.variants,
       name: product.name,
-      price: product.price,
+      price: selectedSize.price,
     };
     console.log(productToPutInCart);
     dispatch({ action: INCREMENT, product: productToPutInCart });

@@ -34,11 +34,8 @@ const Cart = () => {
                 return (
                   <>
                     {item && (
-                      <li key={`${item._id} + ${item.size}`}>
-                        <CartItem
-                          key={`${item._id} + ${item.size}`}
-                          item={item}
-                        />
+                      <li key={item._id}>
+                        <CartItem item={item} />
                       </li>
                     )}
                   </>
