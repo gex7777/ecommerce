@@ -5,9 +5,9 @@ import useLocalStorage from "./../hooks/useLocalStorage";
 const ShoppingCartContext = createContext();
 
 export function ShoppingCartProvider({ children }) {
-  const [cart, setCart] = useLocalStorage("cart", []);
-  const [cartState, dispatch] = useReducer(shopReducer({ state: cart }), {
-    cart: cart,
+  const cart = JSON.parse(localStorage.getItem("cart"));
+  const [cartState, dispatch] = useReducer(shopReducer, {
+    cart: cart | [],
   });
   const [showCart, setShowCart] = useState(false);
   const totalQuantity = cartState.cart?.reduce(
