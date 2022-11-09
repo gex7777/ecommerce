@@ -5,18 +5,18 @@ import React, {
   useReducer,
   useState,
 } from "react";
-import { shopReducer } from "./shopReducer";
+import { INITIALIZE, shopReducer } from "./shopReducer";
 
 const ShoppingCartContext = createContext();
 
 export function ShoppingCartProvider({ children }) {
   useEffect(() => {
     const cart = JSON.parse(localStorage.getItem("cart"));
-    setInitialValue(cart);
+    dispatch({ action: INITIALIZE, cart: cart });
   }, []);
-  const [initialValue, setInitialValue] = useState([]);
+
   const [cartState, dispatch] = useReducer(shopReducer, {
-    cart: initialValue,
+    cart: [],
   });
   const [showCart, setShowCart] = useState(false);
   const totalQuantity = cartState.cart?.reduce(

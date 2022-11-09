@@ -1,8 +1,9 @@
 //actions
-export const INCREMENT = "INCREMENT";
+import { INCREMENT } from "./shopReducer";
+
 export const DECREMENT = "DECREMENT";
 export const REMOVE = "REMOVE";
-
+export const INITIALIZE = "INITIALIZE";
 //functions
 const addProductToCart = (state, payload) => {
   console.log(payload);
@@ -98,6 +99,10 @@ export const shopReducer = (state, payload) => {
     case REMOVE: {
       console.log("remove item in cart");
       return removeProductInCart(state, payload);
+    }
+    case INITIALIZE: {
+      console.log("Initializing cart");
+      return { ...state, cart: payload.cart };
     }
   }
 };
