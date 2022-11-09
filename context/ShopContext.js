@@ -1,13 +1,22 @@
-import React, { createContext, useContext, useReducer, useState } from "react";
+import React, {
+  createContext,
+  useEffect,
+  useContext,
+  useReducer,
+  useState,
+} from "react";
 import { shopReducer } from "./shopReducer";
-import useLocalStorage from "./../hooks/useLocalStorage";
 
 const ShoppingCartContext = createContext();
 
 export function ShoppingCartProvider({ children }) {
-  const cart = JSON.parse(localStorage.getItem("cart"));
+  useEffect(() => {
+    const cart = JSON.parse(localStorage.getItem("cart"));
+    setInitialValue(cart);
+  }, []);
+  const [initialValue, setInitialValue] = useState([]);
   const [cartState, dispatch] = useReducer(shopReducer, {
-    cart: cart | [],
+    cart: initialValue,
   });
   const [showCart, setShowCart] = useState(false);
   const totalQuantity = cartState.cart?.reduce(

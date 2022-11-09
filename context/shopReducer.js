@@ -14,21 +14,24 @@ const addProductToCart = (state, payload) => {
     )
   ) {
     console.log("found duplicate");
+    const newUpdatedCart = updatedCart.map((item) => {
+      if (
+        item._id === payload.product._id &&
+        item.size === payload.product.size
+      ) {
+        return { ...item, quantity: item.quantity + 1 };
+      } else {
+        return item;
+      }
+    });
+    localStorage.setItem("cart", JSON.stringify(newUpdatedCart));
     return {
       ...state,
-      cart: updatedCart.map((item) => {
-        if (
-          item._id === payload.product._id &&
-          item.size === payload.product.size
-        ) {
-          return { ...item, quantity: item.quantity + 1 };
-        } else {
-          return item;
-        }
-      }),
+      cart: newUpdatedCart,
     };
   } else {
     updatedCart.push(payload.product);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
     return { ...state, cart: updatedCart };
   }
 };
@@ -41,36 +44,43 @@ const decrementProductInCart = (state, payload) => {
         item._id === payload.product._id && item.size === payload.product.size
     ).quantity === 1
   ) {
+    const newUpdatedCart = updatedCart.filter(
+      (item) =>
+        item._id !== payload.product.id && item.size !== payload.product.size
+    );
+    localStorage.setItem("cart", JSON.stringify(newUpdatedCart));
     return {
       ...state,
-      cart: updatedCart.filter(
-        (item) =>
-          item._id !== payload.product.id && item.size !== payload.product.size
-      ),
+      cart: newUpdatedCart,
     };
-  } else
+  } else {
+    const newUpdatedCart = updatedCart.map((item) => {
+      if (
+        item._id === payload.product._id &&
+        item.size === payload.product.size
+      ) {
+        return { ...item, quantity: item.quantity - 1 };
+      } else {
+        return item;
+      }
+    });
+    localStorage.setItem("cart", JSON.stringify(newUpdatedCart));
     return {
       ...state,
-      cart: updatedCart.map((item) => {
-        if (
-          item._id === payload.product._id &&
-          item.size === payload.product.size
-        ) {
-          return { ...item, quantity: item.quantity - 1 };
-        } else {
-          return item;
-        }
-      }),
+      cart: newUpdatedCart,
     };
+  }
 };
 const removeProductInCart = (state, payload) => {
   const updatedCart = [...state.cart];
+  const newUpdatedCart = updatedCart.filter(
+    (item) =>
+      item._id !== payload.product.id && item.size !== payload.product.size
+  );
+  localStorage.setItem("cart", JSON.stringify(newUpdatedCart));
   return {
     ...state,
-    cart: updatedCart.filter(
-      (item) =>
-        item._id !== payload.product.id && item.size !== payload.product.size
-    ),
+    cart: newUpdatedCart,
   };
 };
 
