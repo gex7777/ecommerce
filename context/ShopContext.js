@@ -12,7 +12,7 @@ const ShoppingCartContext = createContext();
 export function ShoppingCartProvider({ children }) {
   useEffect(() => {
     const cart = JSON.parse(localStorage.getItem("cart"));
-    dispatch({ action: INITIALIZE, cart: cart });
+    cart && dispatch({ action: INITIALIZE, cart: cart });
   }, []);
 
   const [cartState, dispatch] = useReducer(shopReducer, {

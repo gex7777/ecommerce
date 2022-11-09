@@ -23,7 +23,7 @@ const ProductList = ({ products }) => {
                 <div className="absolute bottom-0 left-0  px-4 pb-4">
                   <h2 className="text-2xl ">{product.name}</h2>
                   <p className="text-xs py-2">
-                    starting at <div className="text-xl">₹{product.price}</div>
+                    starting at <p className="text-xl">₹{product.price}</p>
                   </p>
                   <div className="">
                     <button className="btn btn-primary">Order now</button>
