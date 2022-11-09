@@ -84,7 +84,12 @@ const removeProductInCart = (state, payload) => {
     cart: newUpdatedCart,
   };
 };
-
+const initilizeCart = (state, payload) => {
+  return {
+    ...state,
+    cart: payload.cart,
+  };
+};
 //reducer
 export const shopReducer = (state, payload) => {
   switch (payload.action) {
@@ -102,7 +107,7 @@ export const shopReducer = (state, payload) => {
     }
     case INITIALIZE: {
       console.log("Initializing cart");
-      return { ...state, cart: payload.cart };
+      return initilizeCart(state, payload);
     }
   }
 };
