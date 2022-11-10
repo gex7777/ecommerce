@@ -21,7 +21,7 @@ const Checkout = ({
     },
   ];
   return (
-    <div className="px-4 flex flex-col justify-center items-stretch">
+    <div className="px-4 flex flex-col justify-center items-stretch divide-y pb-3">
       <ul className="steps container mx-auto">
         <li className="step step-primary">Purchase</li>
 
@@ -30,7 +30,7 @@ const Checkout = ({
       </ul>
 
       <div className="text-3xl font-bold my-4">order review</div>
-      <CollapseParagraph>
+      <CollapseParagraph title="Cart summary">
         <div className="divide-y">
           {cart && cart.length > 0 && cart.map((item) => cartItem(item))}
         </div>
@@ -50,7 +50,7 @@ const Checkout = ({
                 {"(free delivery on orders above 500)"}
               </div>
             </div>
-            <span className="text-green-500">0</span>
+            <span className="text-yellow-500">address pending</span>
           </div>
         </div>
         <div class="border-y-2 border-dashed py-2 my-2">
