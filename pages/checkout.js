@@ -1,4 +1,5 @@
 import React from "react";
+import CollapseParagraph from "./../components/CollapseParagraph";
 
 const Checkout = ({
   orderObj: { cartp } = {
@@ -29,58 +30,54 @@ const Checkout = ({
       </ul>
 
       <div className="text-3xl font-bold my-4">order review</div>
-      <div className="divide-y">
-        {cart &&
-          cart.length > 0 &&
-          cart.map((item) => (
-            cartItem(item)
-          ))}
-      </div>
-      <div className="flex flex-col text-xl">
-        <div className="flex justify-between pt-4">
-          <span>{"price(number of items)"}</span>
-          <span>price</span>
+      <CollapseParagraph>
+        <div className="divide-y">
+          {cart && cart.length > 0 && cart.map((item) => cartItem(item))}
         </div>
-        <div className="flex justify-between pt-2">
-          <span>{"website discount (5%)"}</span>
-          <span className="text-green-500 ">-3</span>
-        </div>
-        <div className="flex justify-between pt-2 ">
-          <div>
-            <div>{"delivery Charges"}</div>
-            <div className="text-xs text-red-700">
-              {"(free delivery on orders above 500)"}
-            </div>
+        <div className="flex flex-col text-xl">
+          <div className="flex justify-between pt-4">
+            <span>{"price(number of items)"}</span>
+            <span>price</span>
           </div>
-          <span className="text-green-500">0</span>
+          <div className="flex justify-between pt-2">
+            <span>{"website discount (5%)"}</span>
+            <span className="text-green-500 ">-3</span>
+          </div>
+          <div className="flex justify-between pt-2 ">
+            <div>
+              <div>{"delivery Charges"}</div>
+              <div className="text-xs text-red-700">
+                {"(free delivery on orders above 500)"}
+              </div>
+            </div>
+            <span className="text-green-500">0</span>
+          </div>
         </div>
-      </div>
-      <div class="border-y-2 border-dashed py-2 my-2">
-        <div className="flex justify-between   text-2xl font-bold">
-          <span>{"Total Amount"}</span>
-          <span>total amount</span>
+        <div class="border-y-2 border-dashed py-2 my-2">
+          <div className="flex justify-between   text-2xl font-bold">
+            <span>{"Total Amount"}</span>
+            <span>total amount</span>
+          </div>
         </div>
-      </div>
+      </CollapseParagraph>
     </div>
   );
 };
 
 export default Checkout;
 function cartItem(item) {
-  return <div className="flex ">
-    <div className="indicator ">
-      <span className="indicator-item badge">{item.quantity}</span>
-      <img
-        className="object-cover h-28 w-28 "
-        src={item.image}
-        alt="maw" />
-    </div>
-    <div className="  flex flex-col justify-start  pl-5">
-      <div className="text-xl font-bold">{`${item.name} (${item.size})`}</div>
-      <div className="">{item.quantity + " qty"}</div>
+  return (
+    <div className="flex p-3 ">
+      <div className="indicator ">
+        <span className="indicator-item badge">{item.quantity}</span>
+        <img className="object-cover h-28 w-28 " src={item.image} alt="maw" />
+      </div>
+      <div className="  flex flex-col justify-start  pl-5">
+        <div className="text-xl font-bold">{`${item.name} (${item.size})`}</div>
+        <div className="">{item.quantity + " qty"}</div>
 
-      <div className=" pr-1 ">₹{item.price * item.quantity}</div>
+        <div className=" pr-1 ">₹{item.price * item.quantity}</div>
+      </div>
     </div>
-  </div>;
+  );
 }
-
