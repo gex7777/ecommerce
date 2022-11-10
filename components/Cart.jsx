@@ -3,6 +3,7 @@ import {
   AiOutlineCloseCircle,
   AiOutlineDelete,
   AiOutlineArrowRight,
+  AiOutlineArrowLeft,
 } from "react-icons/ai";
 import { useShoppingCart } from "../context/ShopContext";
 
@@ -22,12 +23,20 @@ const Cart = () => {
         onClick={() => setShowCart(false)}
         className="drawer-overlay"
       ></label>
+
       <div
-        className="top-0 right-0 pb-16  px-4 z-10 fixed  bg-base-100 backdrop-blur-sm bg-opacity-90 h-full flex flex-col justify-between w-11/12 md:w-[30%] lg:w-[30%]
-      "
+        className="top-0 right-0 pb-5  px-4 z-10 fixed  bg-base-100 backdrop-blur-sm bg-opacity-90 h-full  w-11/12 md:w-[30%] lg:w-[30%]
+        "
       >
+        <button
+          className="flex btn-lg btn-ghost rounded-full  items-center p-5"
+          onClick={() => setShowCart(false)}
+        >
+          <AiOutlineArrowLeft />
+          back to shoping
+        </button>
         {cartState && cartState.cart.length > 0 ? (
-          <>
+          <div className="flex flex-col justify-between h-full pb-14">
             <ul className="  flex flex-col divide-y w-full max-h-[80%] overflow-y-scroll ">
               {cartState.cart.map((item) => {
                 console.log(item);
@@ -53,11 +62,8 @@ const Cart = () => {
                   <AiOutlineArrowRight size={29} />
                 </span>{" "}
               </div>
-              <button onClick={() => setShowCart(false)}>
-                back to shoping
-              </button>
             </div>
-          </>
+          </div>
         ) : (
           <EmptyCart />
         )}
