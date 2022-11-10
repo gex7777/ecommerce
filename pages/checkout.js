@@ -21,7 +21,7 @@ const Checkout = ({
     },
   ];
   return (
-    <div className="px-4 flex flex-col justify-center items-stretch divide-y pb-3">
+    <div className="px-4 flex flex-col justify-center items-stretch gap-3 pb-3">
       <ul className="steps container mx-auto">
         <li className="step step-primary">Purchase</li>
 
@@ -29,7 +29,6 @@ const Checkout = ({
         <li className="step">confirmation</li>
       </ul>
 
-      <div className="text-3xl font-bold my-4">order review</div>
       <CollapseParagraph title="Cart summary">
         <div className="divide-y">
           {cart && cart.length > 0 && cart.map((item) => cartItem(item))}
@@ -60,6 +59,8 @@ const Checkout = ({
           </div>
         </div>
       </CollapseParagraph>
+
+      <CollapseParagraph title="Shipping address"></CollapseParagraph>
     </div>
   );
 };
