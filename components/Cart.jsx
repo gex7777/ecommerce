@@ -29,7 +29,7 @@ const Cart = () => {
         "
       >
         <button
-          className="flex btn-lg btn-ghost rounded-full  items-center p-5"
+          className="flex btn-lg btn-ghost btn normal-case text-primary items-center p-5"
           onClick={() => setShowCart(false)}
         >
           <AiOutlineArrowLeft />
