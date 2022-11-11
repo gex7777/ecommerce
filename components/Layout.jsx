@@ -15,7 +15,9 @@ const Layout = ({ children }) => {
       <Head>
         <title>Jancy Teachers Food Products</title>
       </Head>
-      <div className="drawer h-full drawer-end ">
+      <div
+        className={`${showCart ? "h-screen" : "h-full"} drawer  drawer-end `}
+      >
         <input
           id="my-drawer"
           type="checkbox"
