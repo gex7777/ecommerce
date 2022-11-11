@@ -20,7 +20,7 @@ export default function ProductDetails({ product }) {
   );
   const addToCart = () => {
     const productToPutInCart = {
-      _id: product._id + product.size,
+      _id: product._id,
       size: selectedSize.name,
       quantity: 1,
       image: product.image[0],
