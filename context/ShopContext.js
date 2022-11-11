@@ -13,6 +13,7 @@ export function ShoppingCartProvider({ children }) {
   useEffect(() => {
     const cart = JSON.parse(localStorage.getItem("cart"));
     cart && dispatch({ action: INITIALIZE, cart: cart });
+    console.log("updateeeed");
   }, []);
 
   const [cartState, dispatch] = useReducer(shopReducer, {
