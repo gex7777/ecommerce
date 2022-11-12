@@ -74,13 +74,12 @@ const decrementProductInCart = (state, payload) => {
 };
 const removeProductInCart = (state, payload) => {
   const updatedCart = [...state.cart];
-  console.log("payload", payload);
+  console.log(" before payload", payload, "cart:", updatedCart);
 
   const newUpdatedCart = updatedCart.filter(
     (item) =>
-      item._id !== payload.product.id && item.size !== payload.product.size
-  );
-  console.log("cart", newUpdatedCart);
+      item._id+item.size !== payload.product._id+payload.product.size  );
+  console.log("after payload", payload, "cart:", newUpdatedCart);
   localStorage.setItem("cart", JSON.stringify(newUpdatedCart));
 
   return {

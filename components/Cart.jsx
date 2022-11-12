@@ -15,7 +15,7 @@ import EmptyCart from "./EmptyCart";
 
 const Cart = () => {
   const { setShowCart, cartState, totalPrice } = useShoppingCart();
-  console.log(cartState);
+
   return (
     <>
       <label
@@ -39,7 +39,6 @@ const Cart = () => {
           <div className="flex flex-col justify-between h-full pb-14">
             <ul className="  flex flex-col divide-y w-full max-h-[80%] overflow-y-scroll ">
               {cartState.cart.map((item) => {
-                console.log(item);
                 return (
                   <>
                     {item && (
@@ -75,7 +74,7 @@ const Cart = () => {
 export default Cart;
 const CartItem = ({ item: { name, quantity, size, variants, _id, image } }) => {
   const { dispatch } = useShoppingCart();
-  console.log(variants, size);
+
   const price = variants.find((varient) => varient.name === size).price;
   return (
     <div className=" grid grid-rows-3 grid-cols-[.7fr_1.4fr_1.4fr]  ">
