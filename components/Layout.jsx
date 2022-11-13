@@ -16,7 +16,9 @@ const Layout = ({ children }) => {
         <title>Jancy Teachers Food Products</title>
       </Head>
       <div
-        className={`${showCart ? "h-screen" : "h-full"} drawer  drawer-end `}
+        className={`${
+          showCart ? "" : "h-full"
+        } overflow-visible drawer  drawer-end `}
       >
         <input
           id="my-drawer"
@@ -24,7 +26,10 @@ const Layout = ({ children }) => {
           checked={showCart}
           className="drawer-toggle"
         />
-        <div className="drawer-content ">
+        <div
+          style={{ overflowY: "visible" }}
+          className=" overflow-y-visible drawer-content "
+        >
           <Navbar />
 
           <Toaster position="top-center" reverseOrder={false} />

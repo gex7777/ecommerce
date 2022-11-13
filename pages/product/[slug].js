@@ -28,15 +28,13 @@ export default function ProductDetails({ product }) {
       name: product.name,
       price: selectedSize.price,
     };
-    console.log(productToPutInCart);
+
     dispatch({ action: INCREMENT, product: productToPutInCart });
     toast.success("added product to cart");
-    setShowCart(true);
   };
   const buyNow = () => {
     addToCart();
-
-    //navigate to checkout
+    setShowCart(true);
   };
   return (
     <div className="">

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { logoName } from "../constants";
 import { HiOutlineShoppingCart, HiOutlineXCircle } from "react-icons/hi";
 
@@ -9,13 +9,36 @@ import Image from "next/image";
 
 const Navbar = () => {
   const { totalQuantity, setShowCart } = useShoppingCart();
+
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [visible, setVisible] = useState(true);
+
+  const handleScroll = () => {
+    const currentScrollPos = window.scrollY;
+
+    if (currentScrollPos > prevScrollPos) {
+      setVisible(false);
+    } else {
+      setVisible(true);
+    }
+
+    setPrevScrollPos(currentScrollPos);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  });
   return (
     <div
-      className="
-      sticky top-0 z-30 flex h-16 w-full justify-center bg-opacity-90 backdrop-blur transition-all duration-100 
-      bg-base-100 text-base-content shadow-sm
+      className={`
+      sticky ${
+        visible ? "top-0 motion-safe:animate-fadeIn" : ""
+      } z-30 flex h-16 w-full justify-center bg-opacity-90 backdrop-blur transition-all duration-100 
+      bg-base-100 text-base-content shadow-sm 
       
-   "
+   `}
     >
       <nav className=" navbar w-full ">
         <div className="flex flex-1">
