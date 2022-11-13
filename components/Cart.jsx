@@ -5,6 +5,7 @@ import {
   AiOutlineArrowRight,
   AiOutlineArrowLeft,
 } from "react-icons/ai";
+
 import { useShoppingCart } from "../context/ShopContext";
 
 import QuantityBtns from "./QuantityBtns";
@@ -13,10 +14,13 @@ import { REMOVE } from "./../context/shopReducer";
 import { urlFor } from "../lib/client";
 import EmptyCart from "./EmptyCart";
 import getStripe from "./../lib/getStripe";
+import { toast } from "react-hot-toast";
 
 const Cart = () => {
   const { setShowCart, cartState, totalPrice } = useShoppingCart();
   const handlerCheckout = async () => {
+    setShowCart((pre) => !pre);
+    toast.loading("Redirecting....");
     const stripe = await getStripe();
     const response = await fetch("/api/stripe", {
       method: "POST",
@@ -28,7 +32,7 @@ const Cart = () => {
 
     if (response.statusCode === 500) return;
     const data = await response.json();
-    toast.loading("Redirecting....");
+
     stripe.redirectToCheckout({ sessionId: data.id });
   };
   return (
@@ -91,7 +95,7 @@ const Cart = () => {
 export default Cart;
 const CartItem = ({ item: { name, quantity, size, variants, _id, image } }) => {
   const { dispatch } = useShoppingCart();
-
+  console.log(image.asset._ref);
   const price = variants.find((varient) => varient.name === size).price;
   return (
     <div className=" grid grid-rows-3 grid-cols-[.7fr_1.4fr_1.4fr]  ">
