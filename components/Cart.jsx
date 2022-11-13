@@ -12,10 +12,25 @@ import QuantityBtns from "./QuantityBtns";
 import { REMOVE } from "./../context/shopReducer";
 import { urlFor } from "../lib/client";
 import EmptyCart from "./EmptyCart";
+import getStripe from "./../lib/getStripe";
 
 const Cart = () => {
   const { setShowCart, cartState, totalPrice } = useShoppingCart();
+  const handlerCheckout = async () => {
+    const stripe = await getStripe();
+    const response = await fetch("/api/stripe", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(cartState.cart),
+    });
 
+    if (response.statusCode === 500) return;
+    const data = await response.json();
+    toast.loading("Redirecting....");
+    stripe.redirectToCheckout({ sessionId: data.id });
+  };
   return (
     <>
       <label
