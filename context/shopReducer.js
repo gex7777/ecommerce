@@ -4,6 +4,7 @@ import { INCREMENT } from "./shopReducer";
 export const DECREMENT = "DECREMENT";
 export const REMOVE = "REMOVE";
 export const INITIALIZE = "INITIALIZE";
+export const CLEAR = "CLEAR";
 //functions
 const addProductToCart = (state, payload) => {
   console.log(payload);
@@ -78,7 +79,8 @@ const removeProductInCart = (state, payload) => {
 
   const newUpdatedCart = updatedCart.filter(
     (item) =>
-      item._id+item.size !== payload.product._id+payload.product.size  );
+      item._id + item.size !== payload.product._id + payload.product.size
+  );
   console.log("after payload", payload, "cart:", newUpdatedCart);
   localStorage.setItem("cart", JSON.stringify(newUpdatedCart));
 
@@ -91,6 +93,13 @@ const initilizeCart = (state, payload) => {
   return {
     ...state,
     cart: payload.cart,
+  };
+};
+const clearCart = (state, payload) => {
+  localStorage.clear();
+  return {
+    ...state,
+    cart: [],
   };
 };
 //reducer
@@ -111,6 +120,10 @@ export const shopReducer = (state, payload) => {
     case INITIALIZE: {
       console.log("Initializing cart");
       return initilizeCart(state, payload);
+    }
+    case CLEAR: {
+      console.log("clearing cart");
+      return clearCart(state, payload);
     }
   }
 };
