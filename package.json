@@ -23,7 +23,7 @@
     "react-hot-toast": "^2.4.0",
     "react-icons": "^4.4.0",
     "react-messenger-customer-chat": "^0.8.0",
-    "stripe": "^8.209.0"
+    "stripe": "^10.17.0"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.18.6",
