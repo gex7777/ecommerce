@@ -4,7 +4,7 @@ import { urlFor } from "../lib/client";
 
 const Carousel = ({ images }) => {
   return (
-    <div className="h-[80vh] ">
+    <div className="h-[80vh] bg-base-200">
       <Caro>
         {images.map((image) => {
           return (

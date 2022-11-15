@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -10,6 +11,17 @@ const Footer = () => {
           100% homemade and organic food products
         </p>
         <p>Copyright © 2022 - All right reserved</p>
+        <div className="flex gap-1">
+          <Link href="/privacy-policy">
+            <p className="hover:underline cursor-pointer">Privacy Policy</p>
+          </Link>
+          <Link href="/terms-of-service">
+            <p className="hover:underline cursor-pointer"> Terms of Service</p>
+          </Link>
+          <Link href="/refund-policy">
+            <p className="hover:underline cursor-pointer">Refund Policy</p>
+          </Link>
+        </div>
       </div>
       <div>
         <div className="grid grid-flow-col gap-4">
