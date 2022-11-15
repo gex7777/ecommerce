@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Document() {
   return (
-    <Html>
+    <Html data-theme="cupcake">
       <Head />
 
       <Main />
