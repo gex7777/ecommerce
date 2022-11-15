@@ -6,6 +6,7 @@ import { useShoppingCart, useStateContext } from "../../context/ShopContext";
 import QuantityBtns from "../../components/QuantityBtns";
 import { INCREMENT } from "./../../context/shopReducer";
 import { toast } from "react-hot-toast";
+import Carousel from "../../components/Carousel";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -40,7 +41,7 @@ export default function ProductDetails({ product }) {
     <div className="">
       <div className="pt-6">
         {/* Image gallery */}
-        <Carosel images={product.image} />
+        <Carousel images={product.image} />
 
         {/* Product info */}
         <div className="mx-auto  px-4 pt-10 pb-16 sm:px-6 lg:grid  lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pt-16 lg:pb-24">
@@ -216,34 +217,4 @@ export const getStaticProps = async ({ params: { slug } }) => {
   return {
     props: { product },
   };
-};
-const Carosel = ({ images }) => {
-  return (
-    <>
-      <div className=" mx-auto carousel w-full sm:w-80 lg:w-2/6 ">
-        {images.map((image, i) => (
-          <div id={`item${i + 1}`} className="carousel-item w-full">
-            <img
-              src={urlFor(image)}
-              className="h-full  object-cover object-center"
-            />
-          </div>
-        ))}
-      </div>
-      <div className="flex justify-center w-full py-2 gap-2">
-        <a href="#item1" className="btn btn-xs">
-          1
-        </a>
-        <a href="#item2" className="btn btn-xs">
-          2
-        </a>
-        <a href="#item3" className="btn btn-xs">
-          3
-        </a>
-        <a href="#item4" className="btn btn-xs">
-          4
-        </a>
-      </div>
-    </>
-  );
 };
