@@ -1,6 +1,7 @@
 import React from "react";
 import { useShoppingCart, useStateContext } from "../context/ShopContext";
 import { DECREMENT, INCREMENT } from "./../context/shopReducer";
+import { toast } from "react-hot-toast";
 
 const QuantityBtns = ({ product, xs }) => {
   const { dispatch, cartState } = useShoppingCart();
@@ -15,7 +16,10 @@ const QuantityBtns = ({ product, xs }) => {
         className={` btn ${
           xs && "btn-xs"
         }  btn-outline rounded-r-none rounded-l-xl`}
-        onClick={() => dispatch({ action: INCREMENT, product })}
+        onClick={() => {
+          dispatch({ action: INCREMENT, product });
+          toast.success("added one more to cart");
+        }}
       >
         +
       </button>
@@ -24,7 +28,10 @@ const QuantityBtns = ({ product, xs }) => {
         className={`btn ${
           xs && "btn-xs"
         }  btn-outline rounded-r-xl rounded-l-none`}
-        onClick={() => dispatch({ action: DECREMENT, product })}
+        onClick={() => {
+          dispatch({ action: DECREMENT, product });
+          toast.success("removed one less in cart");
+        }}
       >
         -
       </button>
