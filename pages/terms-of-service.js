@@ -9,8 +9,8 @@ import {
 
 const Tos = () => {
   return (
-    <div className="container mx-auto">
-      <div className="font-bold text-lg">TERMS OF SERVICE</div>
+    <div className="container mx-auto px-4 ">
+      <div className="font-bold text-lg py-4">TERMS OF SERVICE</div>
 
       <p className="font-bold text-xs">OVERVIEW</p>
 

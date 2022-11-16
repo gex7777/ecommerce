@@ -4,8 +4,8 @@ import { BUSINESS_EMAIL } from "./../constants";
 
 const Ppolicy = () => {
   return (
-    <div className="container mx-auto my-7">
-      <p className="font-bold text-lg">
+    <div className="container mx-auto my-7 px-4">
+      <p className="font-bold text-lg py-4">
         Jancy Teachers Food Products Privacy Policy
       </p>
 
