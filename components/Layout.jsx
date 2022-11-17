@@ -17,8 +17,8 @@ const Layout = ({ children }) => {
       </Head>
       <div
         className={`${
-          showCart ? "" : "h-full"
-        } overflow-visible drawer  drawer-end `}
+          showCart ? "" : "h-full overflow-visible"
+        }  drawer  drawer-end `}
       >
         <input
           id="my-drawer"
