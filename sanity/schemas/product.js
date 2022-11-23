@@ -35,6 +35,7 @@ export default {
           { title: "cakes", value: CAKES },
           { title: "achaar", value: ACHAARS },
           { title: "snacks", value: SNACKS },
+          { title: "spices", value: SNACKS },
         ],
       },
     },

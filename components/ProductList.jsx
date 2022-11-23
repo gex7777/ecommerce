@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { ALL, CAKES, ACHAARS, SNACKS } from "./../constants";
+import { ALL, CAKES, ACHAARS, SNACKS, SPICES } from "./../constants";
 import FilterHeads from "./FilterHeads";
 import ProductCard from "./ProductCard";
 
@@ -9,6 +9,7 @@ const filters = {
   [CAKES]: (item) => item.category === CAKES,
   [ACHAARS]: (item) => item.category === ACHAARS,
   [SNACKS]: (item) => item.category === SNACKS,
+  [SPICES]: (item) => item.category === SPICES,
 };
 const ProductList = ({ products }) => {
   console.log(products);

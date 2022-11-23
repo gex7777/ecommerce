@@ -9,3 +9,4 @@ export const CAKES = "CAKES";
 export const ACHAARS = "ACHAARS";
 export const SNACKS = "SNACKS";
 export const ALL = "ALL";
+export const SPICES = "SPICES";

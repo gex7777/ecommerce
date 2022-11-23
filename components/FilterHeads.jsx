@@ -1,5 +1,5 @@
 import React from "react";
-import { ALL, CAKES, SNACKS, ACHAARS } from "../constants";
+import { ALL, CAKES, SNACKS, ACHAARS, SPICES } from "../constants";
 
 const FilterHeads = ({ filter, setFilter }) => {
   return (
@@ -28,6 +28,12 @@ const FilterHeads = ({ filter, setFilter }) => {
         onClick={() => setFilter(ACHAARS)}
       >
         Achaars
+      </button>
+      <button
+        className={`btn ${filter === SPICES ? "btn-active" : ""}`}
+        onClick={() => setFilter(SPICES)}
+      >
+        Spices
       </button>
     </div>
   );
