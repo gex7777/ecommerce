@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { urlFor } from "../lib/client";
 const ProductCard = ({ product }) => {
   return (
     <Link href={`/product/${product.slug.current}`} key={product._id}>
