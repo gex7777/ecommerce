@@ -1,4 +1,6 @@
 import client from "part:@sanity/base/client";
+import { CAKES, SNACKS } from "../../constants";
+import { ACHAARS } from "./../../constants";
 export default {
   name: "product",
   title: "Product",
@@ -23,6 +25,18 @@ export default {
       title: "Variants",
       type: "array",
       of: [{ type: "variant" }],
+    },
+    {
+      name: "category",
+      title: "Category",
+      type: "string",
+      options: {
+        list: [
+          { title: "cakes", value: CAKES },
+          { title: "achaar", value: ACHAARS },
+          { title: "snacks", value: SNACKS },
+        ],
+      },
     },
     {
       name: "name",
