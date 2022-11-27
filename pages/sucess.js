@@ -3,11 +3,13 @@ import { BsStar } from "react-icons/bs";
 import Link from "next/link";
 import { useShoppingCart } from "../context/ShopContext";
 import { CLEAR } from "../context/shopReducer";
+import { runFireworks } from "../lib/utils";
 
 const Sucess = () => {
   const { dispatch } = useShoppingCart();
   useEffect(() => {
-    return dispatch({ action: CLEAR });
+    dispatch({ action: CLEAR });
+    runFireworks();
   }, []);
 
   return (
