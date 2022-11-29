@@ -25,6 +25,7 @@ const Layout = ({ children }) => {
           type="checkbox"
           checked={showCart}
           className="drawer-toggle"
+          onChange={() => null}
         />
         <div
           style={{ overflowY: "visible" }}

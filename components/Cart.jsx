@@ -19,6 +19,7 @@ import { toast } from "react-hot-toast";
 const Cart = () => {
   const { setShowCart, cartState, totalPrice } = useShoppingCart();
   const handlerCheckout = async () => {
+    console.log("im heerer");
     setShowCart((pre) => !pre);
     toast.loading("Redirecting....");
     const stripe = await getStripe();
@@ -32,6 +33,7 @@ const Cart = () => {
 
     if (response.statusCode === 500) return;
     const data = await response.json();
+    console.log(data);
 
     stripe.redirectToCheckout({ sessionId: data.id });
   };
@@ -58,15 +60,7 @@ const Cart = () => {
           <div className="flex flex-col justify-between h-full pb-14">
             <ul className="  flex flex-col divide-y w-full max-h-[80%] overflow-y-scroll ">
               {cartState.cart.map((item) => {
-                return (
-                  <>
-                    {item && (
-                      <li key={item._id}>
-                        <CartItem item={item} />
-                      </li>
-                    )}
-                  </>
-                );
+                return <CartItem item={item} key={item._id + item.size} />;
               })}
             </ul>
             <div className="flex flex-col">
@@ -98,68 +92,71 @@ const CartItem = ({ item: { name, quantity, size, variants, _id, image } }) => {
   console.log(image.asset._ref);
   const price = variants.find((varient) => varient.name === size).price;
   return (
-    <div className=" grid grid-rows-3 grid-cols-[.7fr_1.4fr_1.4fr]  ">
-      <div className="row-span-3   justify-self-center">
-        <img
-          className="object-contain h-28 w-28 p-2"
-          src={urlFor(image)}
-          alt="maw"
-        />
-      </div>
-      <div className=" p-1  col-span-2 flex justify-between ">
-        <div className="">{name}</div>
-        <div className="">₹ {price * quantity}</div>
-      </div>
-      <div className="flex items-start justify-between col-span-2">
-        <div className="flex items-center divide-x">
-          <div className=" pr-1 ">₹{price}</div>
-          <div
-            className={`${
-              variants.find((varient) => varient.name === size).instock
-                ? "text-green-500"
-                : "text-red-500"
-            } pl-1 `}
-          >
-            {variants.find((varient) => varient.name === size).instock
-              ? "in stock"
-              : "not available"}
+    <li>
+      {" "}
+      <div className=" grid grid-rows-3 grid-cols-[.7fr_1.4fr_1.4fr]  ">
+        <div className="row-span-3   justify-self-center">
+          <img
+            className="object-contain h-28 w-28 p-2"
+            src={urlFor(image)}
+            alt="maw"
+          />
+        </div>
+        <div className=" p-1  col-span-2 flex justify-between ">
+          <div className="">{name}</div>
+          <div className="">₹ {price * quantity}</div>
+        </div>
+        <div className="flex items-start justify-between col-span-2">
+          <div className="flex items-center divide-x">
+            <div className=" pr-1 ">₹{price}</div>
+            <div
+              className={`${
+                variants.find((varient) => varient.name === size).instock
+                  ? "text-green-500"
+                  : "text-red-500"
+              } pl-1 `}
+            >
+              {variants.find((varient) => varient.name === size).instock
+                ? "in stock"
+                : "not available"}
+            </div>
           </div>
         </div>
-      </div>
-      <div className="col-span-2  ">
-        <div className="flex justify-between items-center">
-          <div className="badge badge-outline ">{size}</div>
+        <div className="col-span-2  ">
+          <div className="flex justify-between items-center">
+            <div className="badge badge-outline ">{size}</div>
 
-          <div className="btn-xs">
-            <QuantityBtns
-              product={{ name, quantity, size, variants, _id }}
-              xs
-            />
+            <div className="btn-xs">
+              <QuantityBtns
+                product={{ name, quantity, size, variants, _id }}
+                xs
+              />
+            </div>
+            <button
+              className="flex items-center btn  btn-xs btn-outline  text-red-600 "
+              onClick={() =>
+                dispatch({
+                  action: REMOVE,
+                  product: { name, quantity, size, variants, _id },
+                })
+              }
+            >
+              <span className=""> delete</span>
+              <span>
+                <AiOutlineDelete className="  rounded-full" size={"1rem"} />
+              </span>
+            </button>
           </div>
-          <button
-            className="flex items-center btn  btn-xs btn-outline  text-red-600 "
-            onClick={() =>
-              dispatch({
-                action: REMOVE,
-                product: { name, quantity, size, variants, _id },
-              })
-            }
-          >
-            <span className=""> delete</span>
-            <span>
-              <AiOutlineDelete className="  rounded-full" size={"1rem"} />
-            </span>
-          </button>
         </div>
-      </div>
 
-      {/*<select className="select select-bordered w-full max-w-xs">
+        {/*<select className="select select-bordered w-full max-w-xs">
         <option disabled selected>
           Who shot first?
         </option>
         <option>Han Solo</option>
         <option>Greedo</option>
       </select>*/}
-    </div>
+      </div>
+    </li>
   );
 };

@@ -15,7 +15,7 @@ const ProductCard = ({ product }) => {
         <div className="absolute bottom-0 left-0  px-4 pb-4">
           <h2 className="text-2xl ">{product.name}</h2>
           <p className="text-xs py-2">
-            starting at <p className="text-xl">₹{product.price}</p>
+            starting at <span className="text-xl">₹{product.price}</span>
           </p>
           <div className="">
             <button className="btn btn-primary">Order now</button>

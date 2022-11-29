@@ -25,7 +25,9 @@ const ProductList = ({ products }) => {
         {products &&
           products
             .filter(filters[filter])
-            .map((product) => <ProductCard product={product} />)}
+            .map((product) => (
+              <ProductCard product={product} key={product.name} />
+            ))}
       </div>
     </div>
   );
