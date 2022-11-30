@@ -68,10 +68,11 @@ const Cart = () => {
                 <div className="">Total</div>
                 <div className="">₹{totalPrice}</div>
               </div>
-              <div className="btn min-h-16 items-center">
-                <span className="" onClick={handlerCheckout}>
-                  checkout
-                </span>
+              <div
+                onClick={handlerCheckout}
+                className="btn min-h-16 items-center"
+              >
+                <span className="">checkout</span>
                 <span>
                   <AiOutlineArrowRight size={29} />
                 </span>{" "}
