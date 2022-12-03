@@ -43,7 +43,7 @@ const Navbar = () => {
       <nav className=" navbar w-full ">
         <div className="flex flex-1">
           <div>
-            <Image src={"/jtfplogo2.png"} width="50" height="50" />
+            <Image src={"/jtfplogo2.webp"} width="50" height="50" />
           </div>
           <Link href={"/"}>
             <a className="btn sm:flex   btn-ghost normal-case ">
