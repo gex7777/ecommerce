@@ -1,11 +1,18 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const Footer = () => {
   return (
     <footer className="footer footer-center p-10 bg-primary text-primary-content">
       <div>
-        <img src="/jtfplogo2.png" alt="" className="w-14 h-14" />
+        <Image
+          src="/jtfplogo2.png"
+          alt=""
+          className="w-14 h-14"
+          height={56}
+          width={56}
+        />
         <p className="font-bold">
           Jancy Teacher's Food Products <br />
           100% homemade and organic food products

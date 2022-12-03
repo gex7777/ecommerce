@@ -15,6 +15,7 @@ import { urlFor } from "../lib/client";
 import EmptyCart from "./EmptyCart";
 import getStripe from "./../lib/getStripe";
 import { toast } from "react-hot-toast";
+import Image from "next/image";
 
 const Cart = () => {
   const { setShowCart, cartState, totalPrice } = useShoppingCart();
@@ -46,7 +47,7 @@ const Cart = () => {
       ></label>
 
       <div
-        className="top-0 right-0 pb-5  px-4 z-10 fixed  bg-base-100 backdrop-blur-sm bg-opacity-90 h-full  w-11/12 md:w-[30%] lg:w-[30%]
+        className="top-0 right-0 pb-5  px-4 z-10 fixed  bg-base-100 backdrop-blur-sm bg-opacity-90 h-full  w-11/12 md:w-[70%] lg:w-[50%]
         "
       >
         <button
@@ -91,19 +92,24 @@ export default Cart;
 const CartItem = ({ item: { name, quantity, size, variants, _id, image } }) => {
   const { dispatch } = useShoppingCart();
   console.log(image.asset._ref);
+  const src = urlFor(image).url();
   const price = variants.find((varient) => varient.name === size).price;
   return (
-    <li>
+    <li className="p-2">
       {" "}
       <div className=" grid grid-rows-3 grid-cols-[.7fr_1.4fr_1.4fr]  ">
         <div className="row-span-3   justify-self-center">
-          <img
-            className="object-contain h-28 w-28 p-2"
-            src={urlFor(image)}
-            alt="maw"
-          />
+          <div className="relative object-contain h-16 w-16 m-2 sm:h-20 sm:w-20">
+            <Image
+              className=""
+              src={src}
+              loader={() => src}
+              layout="fill"
+              alt="maw"
+            />
+          </div>
         </div>
-        <div className=" p-1  col-span-2 flex justify-between ">
+        <div className=" p-1   col-span-2 flex justify-between ">
           <div className="">{name}</div>
           <div className="">₹ {price * quantity}</div>
         </div>
