@@ -42,12 +42,6 @@ const Layout = ({ children }) => {
           <Cart />
         </div>
       </div>
-      <MessengerCustomerChat
-        pageId={process.env.NEXT_PUBLIC_FACEBOOK_APP_PAGE_ID}
-        appId={process.env.NEXT_PUBLIC_FACEBOOK_APP_ID}
-        version={"1.0"}
-        xfbml={true}
-      />
     </>
   );
 };
