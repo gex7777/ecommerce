@@ -32,7 +32,7 @@ const Navbar = () => {
   });
   return (
     <div
-      className={`
+      className={` base-content
       sticky ${
         visible ? "top-0 motion-safe:animate-fadeIn" : ""
       } z-30 flex h-16 w-full justify-center bg-opacity-90 backdrop-blur transition-all duration-100 
@@ -45,25 +45,21 @@ const Navbar = () => {
           <div>
             <Image src={"/jtfplogo2.webp"} width="50" height="50" alt="logo" />
           </div>
-          <Link href={"/"}>
-            <a className="btn sm:flex   btn-ghost normal-case ">
-              <div className="font-title text-primary inline-flex   transition-all duration-200 md:text-3xl">
-                <div className="truncate ... max-w-[100px] sm:max-w-full">
-                  {logoName}
-                </div>
+          <Link className="btn sm:flex   btn-ghost normal-case " href={"/"}>
+            <div className="font-title text-base-content inline-flex   transition-all duration-200 md:text-3xl">
+              <div className="truncate ... max-w-[100px] sm:max-w-full">
+                {logoName}
               </div>
-            </a>
+            </div>
           </Link>
         </div>
 
         <div className="flex-0">
           <div>
-            <Link href={"/support"}>
-              <a className="btn btn-ghost  normal-case ">
-                <div className="font-title text-primary inline-flex  transition-all duration-200 md:text-3xl">
-                  Contact us
-                </div>
-              </a>
+            <Link className="btn btn-ghost  normal-case " href={"/support"}>
+              <div className="font-title  inline-flex  transition-all duration-200 md:text-3xl">
+                Contact us
+              </div>
             </Link>
           </div>
           <button

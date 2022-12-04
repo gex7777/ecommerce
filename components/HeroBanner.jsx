@@ -10,14 +10,15 @@ const HeroBanner = ({ bannerData }) => {
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
         {src && (
-          <Image
-            loader={() => src}
-            src={src}
-            width={340}
-            height={380}
-            alt="logo"
-            className="max-w-xs md:max-w-sm rounded-lg shadow-2xl"
-          />
+          <div className=" relative h-96 w-96 max-w-xs md:max-w-sm">
+            <Image
+              src={src}
+              alt="banner"
+              fill
+              className=" object-cover rounded-lg shadow-2xl"
+              placeholder="empty"
+            />
+          </div>
         )}
         <div>
           <h1 className="text-5xl font-bold">{bannerData.title}</h1>

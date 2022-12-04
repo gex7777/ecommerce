@@ -45,8 +45,8 @@ export default function ProductDetails({ product }) {
 
         {/* Product info */}
         <div className="mx-auto  px-4 pt-10 pb-16 sm:px-6 lg:grid  lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pt-16 lg:pb-24">
-          <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-            <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
+          <div className="lg:col-span-2 lg:border-r  lg:pr-8">
+            <h1 className="text-2xl font-bold tracking-tight  sm:text-3xl">
               {product.name}
             </h1>
           </div>
@@ -54,14 +54,12 @@ export default function ProductDetails({ product }) {
           {/* Options */}
           <div className="mt-4 lg:row-span-3 lg:mt-0">
             <h2 className="sr-only">Product information</h2>
-            <p className="text-3xl tracking-tight text-gray-900">
-              ₹{selectedSize.price}
-            </p>
+            <p className="text-3xl tracking-tight">₹{selectedSize.price}</p>
 
             {/* Variants */}
             <div className="mt-10">
               <div className="flex items-center justify-between">
-                <h3 className="text-sm font-medium text-gray-900">Weight</h3>
+                <h3 className="text-sm font-medium">Weight</h3>
               </div>
 
               <RadioGroup
@@ -82,10 +80,10 @@ export default function ProductDetails({ product }) {
                         className={({ active }) =>
                           classNames(
                             size.instock
-                              ? "bg-white shadow-sm text-gray-900 cursor-pointer"
-                              : "bg-gray-50 text-gray-200 cursor-not-allowed",
-                            active ? "ring-2 ring-indigo-500" : "",
-                            "group relative border rounded-md py-3 px-4 flex items-center justify-center text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6"
+                              ? " shadow-sm  cursor-pointer"
+                              : "  cursor-not-allowed",
+                            active ? "ring-2 ring-primary-500" : "",
+                            "group relative border rounded-md py-3 px-4 flex items-center justify-center text-sm font-medium uppercase hover:bg-base-50  sm:flex-1 sm:py-6"
                           )
                         }
                       >
@@ -97,9 +95,9 @@ export default function ProductDetails({ product }) {
                             {size.instock ? (
                               <span
                                 className={classNames(
-                                  active ? "border" : "border-2",
+                                  active ? "border	" : "border-2",
                                   checked
-                                    ? "border-indigo-500"
+                                    ? "border-primary-content"
                                     : "border-transparent",
                                   "pointer-events-none absolute -inset-px rounded-md"
                                 )}
@@ -108,10 +106,10 @@ export default function ProductDetails({ product }) {
                             ) : (
                               <span
                                 aria-hidden="true"
-                                className="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200"
+                                className="pointer-events-none absolute -inset-px rounded-md border-2 "
                               >
                                 <svg
-                                  className="absolute  inset-0 h-full  stroke-2 text-gray-200"
+                                  className="absolute  inset-0 h-full  stroke-2 "
                                   viewBox="0 0 100 100"
                                   preserveAspectRatio="none"
                                   stroke="currentColor"
@@ -153,25 +151,25 @@ export default function ProductDetails({ product }) {
             )}
           </div>
 
-          <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pt-6 lg:pb-16 lg:pr-8">
+          <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r  lg:pt-6 lg:pb-16 lg:pr-8">
             {/* Description and details */}
             <div>
               <h3 className="sr-only">Description</h3>
 
               <div className="space-y-6">
-                <p className="text-base text-gray-900">{product.description}</p>
+                <p className="text-base ">{product.description}</p>
               </div>
             </div>
 
             <div className="mt-10">
-              <h3 className="text-sm font-medium text-gray-900">Highlights</h3>
+              <h3 className="text-sm font-medium ">Highlights</h3>
 
               <div className="mt-4">
                 <ul role="list" className="list-disc space-y-2 pl-4 text-sm">
                   {product.highlights &&
                     product.highlights.map((highlight) => (
                       <li key={highlight} className="text-gray-400">
-                        <span className="text-gray-600">{highlight}</span>
+                        <span className="">{highlight}</span>
                       </li>
                     ))}
                 </ul>
@@ -179,10 +177,10 @@ export default function ProductDetails({ product }) {
             </div>
 
             <div className="mt-10">
-              <h2 className="text-sm font-medium text-gray-900">Details</h2>
+              <h2 className="text-sm font-medium ">Details</h2>
 
               <div className="mt-4 space-y-6">
-                <p className="text-sm text-gray-600">{product.details}</p>
+                <p className="text-sm ">{product.details}</p>
               </div>
             </div>
           </div>

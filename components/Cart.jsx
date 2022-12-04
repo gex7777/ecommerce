@@ -71,7 +71,7 @@ const Cart = () => {
               </div>
               <div
                 onClick={handlerCheckout}
-                className="btn min-h-16 items-center"
+                className="btn btn-primary min-h-16 items-center"
               >
                 <span className="">checkout</span>
                 <span>

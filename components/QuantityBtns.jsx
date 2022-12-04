@@ -13,9 +13,9 @@ const QuantityBtns = ({ product, xs }) => {
   return (
     <div className="w-full h-full flex  items-center">
       <button
-        className={` btn ${
+        className={`  btn btn-outline ${
           xs && "btn-xs"
-        }  btn-outline rounded-r-none rounded-l-xl`}
+        }   rounded-r-none rounded-l-xl`}
         onClick={() => {
           dispatch({ action: INCREMENT, product });
           toast.success("added one more to cart");
@@ -23,11 +23,11 @@ const QuantityBtns = ({ product, xs }) => {
       >
         +
       </button>
-      <div className={`btn ${xs && "btn-xs"}  rounded-none`}>{quantity}</div>
+      <div className={`btn   ${xs && "btn-xs"}  rounded-none`}>{quantity}</div>
       <button
-        className={`btn ${
+        className={`btn  btn-outline ${
           xs && "btn-xs"
-        }  btn-outline rounded-r-xl rounded-l-none`}
+        }   rounded-r-xl rounded-l-none`}
         onClick={() => {
           dispatch({ action: DECREMENT, product });
           toast.success("removed one less in cart");
