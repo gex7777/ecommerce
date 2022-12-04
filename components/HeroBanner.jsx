@@ -15,6 +15,7 @@ const HeroBanner = ({ bannerData }) => {
             src={src}
             width={340}
             height={380}
+            alt="logo"
             className="max-w-xs md:max-w-sm rounded-lg shadow-2xl"
           />
         )}

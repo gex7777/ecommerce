@@ -8,7 +8,7 @@ const Footer = () => {
       <div>
         <Image
           src="/jtfplogo2.png"
-          alt=""
+          alt="logo"
           className="w-14 h-14"
           height={56}
           width={56}
