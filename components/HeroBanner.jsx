@@ -10,7 +10,7 @@ const HeroBanner = ({ bannerData }) => {
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
         {src && (
-          <div className=" relative h-96 w-96 max-w-xs md:max-w-sm">
+          <div className=" relative h-96 w-96 lg:h-[30rem] lg:w-[54rem]">
             <Image
               src={src}
               alt="banner"
