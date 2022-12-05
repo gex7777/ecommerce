@@ -24,7 +24,9 @@ const HeroBanner = ({ bannerData }) => {
           <h1 className="text-5xl font-bold">{bannerData.title}</h1>
           <p className="py-6 ">{bannerData.desc}</p>
           <Link href={`/product/dates-and-carrot-cake`}>
-            <button className="btn btn-primary">{bannerData.btnText}</button>
+            <button aria-label="buy now" className="btn btn-primary">
+              {bannerData.btnText}
+            </button>
           </Link>
         </div>
       </div>

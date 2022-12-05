@@ -5,6 +5,7 @@ const FilterHeads = ({ filter, setFilter }) => {
   return (
     <div className="btn-group btn-group-horizontal">
       <button
+        aria-label="filter type"
         className={`btn btn-xs sm:btn-sm lg:btn-lg ${
           filter === ALL ? "btn-active" : ""
         }`}
@@ -13,6 +14,7 @@ const FilterHeads = ({ filter, setFilter }) => {
         All
       </button>
       <button
+        aria-label="filter type"
         className={`btn btn-xs sm:btn-sm  lg:btn-lg ${
           filter === CAKES ? "btn-active" : ""
         }`}
@@ -22,6 +24,7 @@ const FilterHeads = ({ filter, setFilter }) => {
       </button>
 
       <button
+        aria-label="filter type"
         className={`btn btn-xs sm:btn-sm  lg:btn-lg ${
           filter === SNACKS ? "btn-active" : ""
         }`}
@@ -30,6 +33,7 @@ const FilterHeads = ({ filter, setFilter }) => {
         Snacks
       </button>
       <button
+        aria-label="filter type"
         className={`btn btn-xs sm:btn-sm  lg:btn-lg ${
           filter === ACHAARS ? "btn-active" : ""
         }`}
@@ -38,6 +42,7 @@ const FilterHeads = ({ filter, setFilter }) => {
         Achaars
       </button>
       <button
+        aria-label="filter type"
         className={`btn btn-xs sm:btn-sm  lg:btn-lg ${
           filter === SPICES ? "btn-active" : ""
         }`}

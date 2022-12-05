@@ -51,6 +51,7 @@ const Cart = () => {
         "
       >
         <button
+          aria-label="Cart"
           className="flex btn-lg btn-ghost btn normal-case text-primary items-center p-5"
           onClick={() => setShowCart(false)}
         >
@@ -69,7 +70,8 @@ const Cart = () => {
                 <div className="">Total</div>
                 <div className="">₹{totalPrice}</div>
               </div>
-              <div
+              <button
+                aria-label="Checkout"
                 onClick={handlerCheckout}
                 className="btn btn-primary min-h-16 items-center"
               >
@@ -77,7 +79,7 @@ const Cart = () => {
                 <span>
                   <AiOutlineArrowRight size={29} />
                 </span>{" "}
-              </div>
+              </button>
             </div>
           </div>
         ) : (
@@ -140,6 +142,7 @@ const CartItem = ({ item: { name, quantity, size, variants, _id, image } }) => {
               />
             </div>
             <button
+              aria-label="remove"
               className="flex items-center btn  btn-xs btn-outline  text-red-600 "
               onClick={() =>
                 dispatch({

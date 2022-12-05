@@ -138,12 +138,17 @@ export default function ProductDetails({ product }) {
               </div>
             ) : (
               <div className="flex justify-between">
-                <button onClick={addToCart} className=" my-6 btn btn-primary">
+                <button
+                  aria-label="add to cart"
+                  onClick={addToCart}
+                  className=" my-6 btn btn-primary"
+                >
                   add to cart
                 </button>
                 <button
                   onClick={buyNow}
                   className=" my-6 btn btn-secondary disabled"
+                  aria-label="buy now"
                 >
                   buy now
                 </button>

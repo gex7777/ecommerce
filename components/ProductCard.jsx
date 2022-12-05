@@ -11,7 +11,12 @@ const ProductCard = ({ product }) => {
       w-80 h-96 rounded-2xl"
       >
         {src && (
-          <Image src={src} fill className="object-cover rounded-2xl"></Image>
+          <Image
+            src={src}
+            alt="product"
+            fill
+            className="object-cover rounded-2xl"
+          ></Image>
         )}
         <div className="h-full w-full absolute bg-gradient-to-t from-base-300 to-transparent rounded-2xl"></div>
         <div className="absolute bottom-0 left-0  px-4 pb-4">
@@ -20,7 +25,9 @@ const ProductCard = ({ product }) => {
             starting at <span className="text-xl">₹{product.price}</span>
           </p>
           <div className="">
-            <button className="btn btn-primary">Order now</button>
+            <button className="btn btn-primary" aria-label="Order now">
+              Order now
+            </button>
           </div>
         </div>
       </div>

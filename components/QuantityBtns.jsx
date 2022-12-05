@@ -13,6 +13,7 @@ const QuantityBtns = ({ product, xs }) => {
   return (
     <div className="w-full h-full flex  items-center">
       <button
+        aria-label="add"
         className={`  btn btn-outline ${
           xs && "btn-xs"
         }   rounded-r-none rounded-l-xl`}
@@ -25,6 +26,7 @@ const QuantityBtns = ({ product, xs }) => {
       </button>
       <div className={`btn   ${xs && "btn-xs"}  rounded-none`}>{quantity}</div>
       <button
+        aria-label="subract"
         className={`btn  btn-outline ${
           xs && "btn-xs"
         }   rounded-r-xl rounded-l-none`}

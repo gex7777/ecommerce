@@ -63,6 +63,7 @@ const Navbar = () => {
             </Link>
           </div>
           <button
+            aria-label="show cart"
             className=" btn btn-ghost cursor-pointer"
             onClick={() => setShowCart((pre) => !pre)}
           >
