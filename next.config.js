@@ -1,7 +1,9 @@
 const withPWA = require("next-pwa")({
   dest: "public",
+  register: true,
+  disable: process.env.NODE_ENV === "development",
 });
-/** @type {import('next').NextConfig} */
+
 const nextConfig = withPWA({
   reactStrictMode: true,
   swcMinify: true,
@@ -10,12 +12,6 @@ const nextConfig = withPWA({
     // domains is an array of comma-separated strings
     // ['cdn.sanity.io', 'cdn.not-sanity.io', 'another domain']
     domains: ["cdn.sanity.io"],
-  },
-  pwa: {
-    dest: "public",
-    register: true,
-    skipWaiting: true,
-    disable: process.env.NODE_ENV === "development",
   },
 });
 
