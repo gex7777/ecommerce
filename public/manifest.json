@@ -1,11 +1,11 @@
 {
-  "theme_color": "#e542e7",
-  "background_color": "#c1e4ec",
+  "theme_color": "#65C3C8",
+  "background_color": "#EF9FBC",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
   "name": "Jancy teacher's food products",
-  "short_name": "jtfp",
+  "short_name": "JTFP",
   "description": "Jancy teacher's food products company's very own online store! Taking orders for cakes, snacks and more!",
   "icons": [
     {
@@ -29,8 +29,8 @@
       "type": "image/png"
     },
     {
-      "src": "/maskable_icon_x192.png",
-      "sizes": "196x196",
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
       "purpose": "any maskable",
       "type": "image/png"
     }
