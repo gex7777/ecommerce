@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import {
   BUSINESS_ADDRESS,
   BUSINESS_EMAIL,
@@ -229,8 +230,10 @@ const Tos = () => {
 
       <p>
         Your submission of personal information through the store is governed by
-        our Privacy Policy. To view our Privacy Policy, please see [LINK TO
-        PRIVACY POLICY]
+        our Privacy Policy. To view our Privacy Policy, please see{" "}
+        <Link href={"/privacy-policy"} className="link">
+          Privacy Policy
+        </Link>
       </p>
 
       <p className="font-bold text-xs">
